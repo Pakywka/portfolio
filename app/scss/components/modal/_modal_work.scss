@@ -1,0 +1,157 @@
+@use '../../helpers'as h;
+
+.modalwork {
+    &-dialog {
+        display: flex;
+        height: h.rem(770);
+        width: h.rem(1200);
+        position: relative;
+        background-color: h.$modal-background;
+
+        @include h.breakpoint-down(medium) {
+            flex-direction: column;
+            height: auto;
+            width: 100vw;
+        }
+    }
+
+    &-windowimage {
+        width: calc(100% - ((4 / 12) * 100%));
+        overflow: hidden;
+        background-color: hsl(0, 0%, 50%);
+
+        @include h.breakpoint-down(medium) {
+            height: h.rem(500);
+            width: 100%;
+        }
+
+        .works-slider {
+            position: relative;
+        }
+
+        img {
+            width: inherit;
+            height: inherit;
+            object-fit: cover;
+        }
+    }
+
+    &-description {
+        width: calc(100% - ((8 / 12) * 100%));
+        padding: h.rem(25);
+        position: relative;
+
+        @include h.breakpoint-down(medium) {
+            width: 100%;
+            padding: h.rem(15) h.rem(25);
+        }
+
+        .description-copy {
+            margin-top: h.rem(10);
+            max-width: h.rem(290);
+
+            @include h.breakpoint-down(medium) {
+                max-width: none;
+            }
+
+            .headline {
+                font-size: clamp(h.rem(22), h.rem(16) + 5vw, h.rem(32));
+                line-height: clamp(h.rem(34), h.rem(16) + 5vw, h.rem(45));
+                font-weight: 700;
+            }
+
+            .subhead {
+                display: flex;
+                align-items: center;
+                font-size: clamp(h.rem(14), h.rem(16) + 5vw, h.rem(18));
+                line-height: clamp(h.rem(20), h.rem(16) + 5vw, h.rem(25));
+            }
+
+            .client {
+                margin: h.rem(33) 0;
+
+                .headline {
+                    font-size: clamp(h.rem(14), h.rem(14) + 5vw, h.rem(16));
+                    line-height: clamp(h.rem(20), h.rem(16) + 5vw, h.rem(25));
+                    font-weight: 700;
+
+                    .subhead {
+                        font-size: clamp(h.rem(12), h.rem(12) + 5vw, h.rem(14));
+                        line-height: clamp(h.rem(18), h.rem(16) + 5vw, h.rem(22));
+                        font-style: italic;
+                    }
+                }
+            }
+
+            p {
+                @include h.text(h.rem(12), h.rem(24), 300);
+                max-height: h.rem(390);
+                overflow: hidden;
+
+                @include h.breakpoint-down(medium) {
+                    max-height: none;
+                }
+            }
+        }
+
+        .switch-panel {
+            position: absolute;
+            padding: h.rem(25);
+            left: h.rem(24);
+            bottom: 0;
+            right: h.rem(24);
+            background-color: h.$primary-light;
+
+            @include h.breakpoint-down(medium) {
+                position: fixed;
+            }
+
+
+            button {
+                background-color: transparent;
+                border: none;
+                text-transform: uppercase;
+                font-size: h.rem(14);
+                line-height: h.rem(22);
+                position: relative;
+                cursor: pointer;
+                position: absolute;
+                bottom: h.rem(15);
+
+                &.jump-previous {
+                    padding-left: h.rem(20);
+                    left: 0;
+
+                    &::before {
+                        content: "";
+                        background-image: url("../../images/icon/arrow.png");
+                        display: inline-block;
+                        height: h.rem(20);
+                        width: h.rem(8);
+                        position: absolute;
+                        bottom: 50%;
+                        left: 0;
+                        transform: translateY(50%);
+                    }
+                }
+
+                &.jump-next {
+                    padding-right: h.rem(20);
+                    right: 0;
+
+                    &::after {
+                        content: "";
+                        background-image: url("../../images/icon/arrow.png");
+                        display: inline-block;
+                        height: h.rem(20);
+                        width: h.rem(8);
+                        position: absolute;
+                        bottom: 50%;
+                        right: 0;
+                        transform: rotate(180deg) translateY(-50%);
+                    }
+                }
+            }
+        }
+    }
+}

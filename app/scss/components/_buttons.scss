@@ -1,0 +1,45 @@
+@use '../helpers/' as h;
+
+button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    border: none;
+}
+
+.btn {
+    padding: h.rem(10) h.rem(30);
+    border: h.rem(2) solid h.$button-border;
+    border-radius: h.rem(20);
+    @include h.text(h.rem(14), null, 700);
+    text-transform: uppercase;
+    background-color: h.$button-background;
+    transition: background-color .2s linear, box-shadow .2s linear;
+    @include h.breakpoint-down(medium) {
+        @include h.text(h.rem(14));
+        padding: h.rem(10) h.rem(20);
+    }
+
+    &:hover {
+        background-color: h.$button_hover-background;
+        color: h.$button_hover-text-color;
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &:focus {
+        outline: none;
+        border-color: h.$focus;
+    }
+
+    &.black {
+        background-color: h.$button--mod-background;
+        color: h.$button--mod-text-color;
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25);
+
+        &:hover {
+            background-color: h.$button--mod_hover-background;
+            color: h.$button--mod_hover-text-color;
+            box-shadow: none;
+        }
+    }
+}

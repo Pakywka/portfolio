@@ -1,0 +1,53 @@
+@use 'variables' as *;
+
+@mixin flex($justify: null, $align: null, $direction: null) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin flexcenter($direction: null) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin position ($position, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin text($size, $line-height: null, $weight: null, $color: null){
+    font-size: $size;
+    line-height: $line-height;
+    font-weight: $weight;
+    color: $color;
+}
+
+
+//медиа выражения
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
+}
+
+@mixin paddingtop {
+    $nav-height: 6rem;
+    padding-top: ($nav-top + $nav-height + 1.8rem);
+
+    @include breakpoint-down(medium) {
+        $nav-height: 4rem;
+        padding-top: ($nav-top + $nav-height + 1.8rem);
+    }
+
+    @include breakpoint-down(small) {
+        $nav-height: 4rem;
+        padding-top: ($nav-top + $nav-height);
+    }
+}

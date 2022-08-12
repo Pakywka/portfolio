@@ -1,0 +1,100 @@
+@use '../helpers' as h;
+
+.blog {
+    .headline {
+        text-align: center;
+    }
+
+    .subhead {
+        font-size: clamp(h.rem(14), h.rem(16) + 2vw, h.rem(18));
+        line-height: clamp(h.rem(25), h.rem(16) + 2vw, h.rem(45));
+        text-align: center;
+
+        @include h.breakpoint-down(medium) {
+            margin-bottom: h.rem(10);
+        }
+    }
+
+    .collection-article {
+        @include h.flex(center);
+        flex-wrap: wrap;
+        margin: h.rem(-15);
+        padding-top: h.rem(40);
+
+        @include h.breakpoint-down(medium) {
+            padding-top: h.rem(10);
+        }
+
+        .article {
+            width: calc((100% / 3) - (var(--gutter-width) * 2));
+            overflow: hidden;
+            margin: var(--gutter-width);
+
+            @include h.breakpoint-down(medium) {
+                width: calc((100% / 2) - (var(--gutter-width) * 2));
+            }
+
+            @include h.breakpoint-down(small) {
+                width: calc((100% / 1) - (var(--gutter-width) * 2));
+            }
+
+            &-preview {
+                overflow: hidden;
+                max-height: h.rem(260);
+                position: relative;
+                margin-bottom: h.rem(12);
+
+                .blur {
+                    @include h.position(absolute, 0, 0, 0, 0);
+                    background-color: rgba(gray, .6);
+                    transition: background-color .1s ease-in-out .1s;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+
+            &-date {
+                @include h.flexcenter(column);
+                @include h.position(absolute, 0, $left: 0);
+                @include h.text(h.rem(16), $color: h.$primary-light);
+                width: h.rem(77);
+                height: h.rem(77);
+                overflow: hidden;
+                background-color: h.$primary-dark;
+                text-align: center;
+                text-transform: lowercase;
+            }
+
+            &-description {
+                .headline {
+                    text-align-last: left;
+                    @include h.text(h.rem(18), h.rem(25), 700);
+                }
+
+                .subhead {
+                    text-align-last: left;
+                    @include h.text(h.rem(12), h.rem(25));
+                }
+
+                p {
+                    @include h.text(h.rem(12), h.rem(24), 300);
+                    margin: h.rem(20) 0 h.rem(30);
+
+                    @include h.breakpoint-down(medium) {
+                        margin: 0 0 h.rem(17);
+                    }
+                }
+            }
+        }
+    }
+
+    .more-posts {
+        display: block;
+        text-align: right;
+        @include h.text(h.rem(14), h.rem(20), null, h.$blog-seemoreposts);
+        text-decoration: underline;
+        margin-top: h.rem(16);
+    }
+}

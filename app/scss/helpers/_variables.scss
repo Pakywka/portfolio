@@ -1,0 +1,60 @@
+@use 'functions' as f;
+
+// корпоративные цвета
+$primary-dark:    hsl(270, 2%, 17%);
+$primary-light:   hsl(0, 0%, 100%);
+$blue:            hsl(192, 57%, 50%);
+$primary-light--tp: rgba(#ffffff, .55);
+// корпоративные цвета /
+
+
+$gray--light: rgba($color: #6A696B, $alpha: .35);
+$gray:      hsl(240, 0%, 55%);
+$gray--dark:hsl(270, 1%, 42%);
+
+$colors: (
+    accent:hsl(52, 100%, 87%),
+    twitch: hsl(300, 100%, 25%)
+);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+};
+
+
+// функциональные переменные
+$blog-subhead:                  $gray--dark;
+$blog-seemoreposts:             $gray--dark;
+$testimonial-background:        $primary-dark;
+$focus:                         $blue;
+$focus--tp:                     $primary-light--tp;
+$navlink_hover-background:      $primary-dark;
+$burger-background:             $primary-dark;
+$text-color-dark:               $primary-dark;
+$text-color-light:              $primary-light;
+$border:                        $gray--dark;
+$form-border:                   $gray--light;
+$button-background:             $primary-light;
+$button_hover-background:       $primary-dark;
+$button-border:                 $primary-dark;
+$button_hover-text-color:       $primary-light;
+$button_focus-border:           $blue;
+$button--mod-background:        $primary-dark;
+$button--mod_hover-background:  $primary-light;
+$button--mod-text-color:        $primary-light;
+$button--mod_hover-text-color:  $primary-dark;
+$line-background:               $gray--light;
+$footer-background:             $primary-dark;
+$footer-text-color:             $gray;
+$modal-background:              $primary-light;
+// функциональные переменные /
+
+// 575.98px, 767.98px, 990.98px, 1199.98
+$breakpoints-down: (
+    'small': f.em(575.98),
+    'medium': f.em(767.98),
+    'large': f.em(990.98),
+    'xlarge': f.em(1199.98),
+);
+
+$nav-top: 1.2rem;

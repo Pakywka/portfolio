@@ -1,0 +1,59 @@
+@use '../helpers' as h;
+
+.aboutme {
+    &-inner {
+        @include h.flex(flex-start, center);
+        max-width: h.rem(1090);
+
+        .aboutme-image-wrap {
+            margin-right: h.rem(45);
+            overflow: hidden;
+            width: 50%;
+
+            @include h.breakpoint-down(medium) {
+                display: none;
+            }
+
+            .aboutme-image {
+                display: block;
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+
+        .aboutme-maincontent {
+            width: 50%;
+            @include h.breakpoint-down(medium) {
+                width: 100%;
+                text-align: center;
+            }
+
+            .aboutme-copy {
+                .subhead {
+                    font-size: clamp(h.rem(25), h.rem(16) + 7vw, h.rem(60));
+                    font-weight: 700;
+                    color: rgba(h.$primary-dark, .15);
+                }
+
+                .paragraph {
+                    @include h.text(h.rem(12), h.rem(24), 300);
+                    margin: h.rem(20) 0 h.rem(40);
+
+                    @include h.breakpoint-down(medium) {
+                        margin: h.rem(15) 0;
+                    }
+
+                    @include h.breakpoint-down(small) {
+                        max-height: h.rem(400);
+                        overflow: hidden;
+                    }
+                }
+            }
+
+            .btn:not(:first-child) {
+                margin-left: h.rem(10);
+            }
+        }
+    }
+}

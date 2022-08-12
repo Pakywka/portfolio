@@ -1,0 +1,236 @@
+@use '../../helpers' as h;
+
+.modalresume-dialog {
+    max-width: h.rem(1200);
+    display: flex;
+    justify-content: center;
+    background-color: h.$modal-background;
+    position: relative;
+    @include h.breakpoint-down(medium) {
+        width: 100%;
+        padding: h.rem(30) 0;
+    }
+
+    .content-wrap {
+        padding: h.rem(70) h.rem(150);
+        text-align: center;
+        overflow: hidden;
+        @include h.breakpoint-down(medium) {
+            padding: 0 h.rem(35);
+        }
+
+        .headline-top {
+            text-align: center;
+            font-size: clamp(h.rem(30), h.rem(16) + 2vw, h.rem(45));
+            font-weight: 700;
+            line-height: 5rem;
+            margin-bottom: clamp(h.rem(30), h.rem(16) + 2vw, h.rem(55));
+        }
+
+        .push-wrap {
+            text-align: center;
+            @include h.breakpoint-down(small) {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            } 
+
+            button {
+                border: 1px solid h.$border;
+                border-radius: h.rem(30);
+                width: h.rem(146);
+                height: h.rem(38);
+
+                &:first-child {
+                    margin-right: h.rem(7.5);
+                    @include h.breakpoint-down(small) {
+                        margin: 0 0 h.rem(5);
+                    }
+                }
+
+                &:last-child {
+                    margin-left: h.rem(7.5);
+                    @include h.breakpoint-down(small) {
+                        margin: h.rem(5) 0 0;
+                    }
+                }
+            }
+        }
+
+        .headline {
+            font-size: h.rem(20);
+            font-weight: 700;
+            line-height: h.rem(25);
+            text-transform: uppercase;
+        }
+
+        .subhead {
+            font-size: h.rem(14);
+            line-height: h.rem(22);
+            text-transform: capitalize;
+        }
+
+        .eyebrow,
+        .date {
+            font-size: h.rem(14);
+            line-height: h.rem(22);
+            text-decoration: underline;
+            margin-bottom: h.rem(15);
+        }
+
+        p {
+            font-size: h.rem(12);
+            font-weight: 300;
+            line-height: h.rem(18);
+            color: h.$border;
+        }
+
+        .biography {
+            margin: h.rem(63) auto h.rem(75);
+            display: flex;
+            justify-content: space-between;
+            @include h.breakpoint-down(medium) {
+                flex-direction: column;
+                margin: h.rem(50) auto h.rem(50);
+            }
+
+            .experience,
+            .education {
+                &.headline {
+                    margin-bottom: h.rem(38);
+                }
+            }
+
+            .story-wrap,
+            .formation,
+            .awards-wrap .reward {
+                .headline {
+                    font-size: h.rem(16);
+                    line-height: h.rem(22);
+                }
+            }
+
+            .experience-module {
+                text-align: right;
+                max-width: h.rem(330);
+                @include h.breakpoint-down(medium) {
+                    text-align: center;
+                }
+
+                .story-wrap {
+                    &:not(:first-child) {
+                        margin-top: h.rem(38);
+                    }
+
+                    .headline {
+                        letter-spacing: h.rem(5);
+                    }
+
+                    .subhead {
+                        font-style: italic;
+                    }
+
+                    p {
+                        max-height: h.rem(55);
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+
+        .thin {
+            height: auto;
+            margin: 0 h.rem(47.5);
+        }
+
+        .education-module {
+            text-align: left;
+            max-width: h.rem(330);
+            @include h.breakpoint-down(medium) {
+                text-align: center;
+            }
+
+            .education.headline {
+                @include h.breakpoint-down(medium) {
+                    margin-top: h.rem(60);
+                }
+            }
+
+            .formation {
+                margin-top: h.rem(32);
+            }
+
+            .skills,
+            .awards {
+                &-wrap {
+                    margin-top: h.rem(32);
+
+                    .headline {
+                        margin-bottom: h.rem(25);
+                    }
+                }
+            }
+            .skills-wrap {
+                .block {
+                    .skill {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        max-width: h.rem(27);
+
+                        .name {
+                            font-size: h.rem(14);
+                            font-weight: 300;
+                            line-height: h.rem(22);
+                            text-transform: capitalize;
+                        }
+
+                        .rank {
+                            height: h.rem(6);
+                            width: 50%;
+                            background-color: h.$gray--dark;
+                            padding-right: h.rem(20);
+                            position: relative;
+
+                            &::after {
+                                content: "";
+                                width: h.rem(30);
+                                height: inherit;
+                                background-color: h.$gray--light;
+                                position: absolute;
+                                right: 0;
+                                bottom: 0;
+                                transform: translateX(100%);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .reward {
+                padding-left: h.rem(52);
+                position: relative;
+                
+                &:not(:first-child) {
+                    margin-top: h.rem(32);
+                }
+
+                .date {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
+
+                .headline {
+                    margin-bottom: 0;
+                }
+
+                p {
+                    max-height: h.rem(40);
+                    overflow: hidden;
+                }
+            }
+
+        }
+    }
+}

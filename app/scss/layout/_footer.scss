@@ -1,0 +1,97 @@
+@use '../helpers' as h;
+
+.site-footer {
+    @extend %color;
+    height: h.rem(58);
+    overflow: hidden;
+    background-color: h.$footer-background;
+
+    @include h.breakpoint-down(small) {
+        height: h.rem(80);
+        padding: h.rem(10) 0;
+    }
+
+    .container {
+        height: 100%;
+    }
+
+    .footer-inner {
+        @include h.flex(space-between);
+        height: inherit;
+
+        @include h.breakpoint-down(medium) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-info {
+            @include h.flex(flex-start, center, row);
+
+            @include h.breakpoint-down(small) {
+                height: 100%;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .copyright {
+                font-size: clamp(h.rem(12), h.rem(12) + 5vw, h.rem(14));
+            }
+
+            .thin {
+                margin: 0 h.rem(12);
+                height: h.rem(21);
+                width: h.rem(1);
+
+                @include h.breakpoint-down(small) {
+                    display: none;
+                }
+            }
+
+            .social-list {
+                @include h.flex;
+
+                li:not(:first-child) {
+                    margin-left: h.rem(17);
+                }
+            }
+        }
+
+        .footer-nav-list {
+            @include h.flex(null, center);
+
+            @include h.breakpoint-down(medium) {
+                display: none;
+            }
+
+            .nav-item {
+                &:not(:first-child) {
+                    margin-left: h.rem(15);
+                }
+
+                a.nav-link {
+                    text-transform: unset;
+                    @extend %color;
+                    @include h.text(h.rem(14), null, 400);
+                    
+                    &::after {
+                        display: none;
+                    }
+                }
+
+                button {
+                    @extend %color;
+                    padding: h.rem(7) h.rem(20);
+                    border-color: h.$footer-text-color;
+                    border-width: h.rem(1);
+                    font-weight: 400;
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+}
+
+%color {
+    color: h.$footer-text-color;
+}

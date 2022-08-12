@@ -1,0 +1,126 @@
+@use '../helpers'as h;
+
+.top {
+    @include h.paddingtop;
+
+    .container {
+        @include h.breakpoint-down(medium) {
+            padding: 0;
+        }
+    }
+
+    &-inner {
+        @include h.flex(space-between, center, row);
+
+        @include h.breakpoint-down(medium) {
+            flex-direction: column;
+            height: calc(100vh - h.rem(70));
+            text-align: center;
+        }
+    }
+
+    &-copy {
+        .eyebrow {
+            font-size: clamp(h.rem(22), h.rem(16) + 5vh, h.rem(32));
+            font-weight: 200;
+
+            .subhead {
+                @include h.text(h.rem(18), null, 300);
+            }
+        }
+    }
+
+    .social-list {
+        margin: h.rem(25) 0 h.rem(40);
+
+        @include h.breakpoint-down(medium) {
+            display: none;
+        }
+
+        .social-link {
+            height: h.rem(41);
+            position: relative;
+
+            &::after {
+                @include h.position(absolute, 0, 0, 0, 0);
+                content: "";
+                display: none;
+                background-color: h.$focus--tp;
+            }
+
+            &:focus {
+                outline: none;
+
+                &::after {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &-image {
+        max-width: h.rem(500);
+        height: 65%;
+        overflow: hidden;
+        text-align: right;
+
+        @include h.breakpoint-down(medium) {
+            max-width: none;
+            width: 100%;
+            margin: h.rem(20) 0;
+        }
+
+        img {
+            width: 100%;
+            height: h.rem(500);
+            border-radius: h.rem(5);
+            object-fit: cover;
+
+            @include h.breakpoint-down(medium) {
+                height: 100%;
+                border-radius: 0;
+                // object-position: center -10rem;
+            }
+        }
+    }
+
+    .cta-links {
+        @include h.breakpoint-down(medium) {
+            display: none;
+        }
+
+        .btn:not(:first-child) {
+            margin-left: h.rem(15);
+        }
+    }
+
+    .mobile-other {
+        display: none;
+
+        @include h.breakpoint-down(medium) {
+            display: block;
+        }
+
+        .social-list {
+            @include h.flex(center);
+
+            @include h.breakpoint-down(medium) {
+                margin-bottom: h.rem(20);
+            }
+        }
+
+        .cta-links {
+            display: block;
+            margin: h.rem(10) 0;
+        }
+    }
+
+}
+
+.social-list {
+    @include h.flex;
+
+    li:not(:first-child) {
+        margin-left: .5rem;
+    }
+}
